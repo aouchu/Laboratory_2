@@ -17,6 +17,7 @@
     margin-bottom:5vh;
     font-family: 'Kenia', cursive;
     font-size: 8vh;
+    text-shadow: lightblue 1px 0 10px;
   }
   h3 {
     color:white;
@@ -103,7 +104,7 @@ audio::-webkit-media-controls-toggle-closed-captions-button {
   border-radius:2vh;
 }
 </style>
-<body>
+<body style="background-image:url('https://img.freepik.com/free-vector/abstract-watercolor-pastel-background_87374-139.jpg?w=740&t=st=1695649849~exp=1695650449~hmac=b1ab5e540466aad24245ee8550dfa358f4186dfaa356e7f890abba66c3e099b6');background-repeat:no-repeat;background-attachment:fixed;background-size:cover">
   <center>
   <h1>Music Player</h1>
 </center>
@@ -112,14 +113,14 @@ audio::-webkit-media-controls-toggle-closed-captions-button {
 <!-- music player -->
 <div style="background-color:black;width:80%;height:10vh;border-radius: 15px 50px 30px;box-shadow: 1vh 1vh 5vh lightblue;">
 <center>
-<audio src='<?php if(isset($playing['music'])): if (!file_exists($playing['music'])): $src = $playing['music']; $fsrc = str_replace('_',' ',$src); echo $fsrc; else: echo $playing['music']; endif; endif; ?>' controls>
+<audio src='<?php if(isset($playing['music'])): if (!file_exists($playing['music'])): $src = $playing['music']; $fsrc = str_replace('_',' ',$src); echo $fsrc; else: echo $playing['music']; endif; endif; ?>' autoplay controls>
 </audio>
 </center>
 </div>
 <!-- end -->
 
 <!-- Playlists -->
-<div style="background-color:rgb(179, 179, 179);width:30%;padding:3vh;border-radius:1vh;margin-left:5%">
+<div style="box-shadow: 1vh 1vh 5vh lightblue;background-color:rgb(179, 179, 179);width:30%;padding:3vh;border-radius:1vh;margin-left:5%">
 <center>
   <div style="background-color:rgb(89, 89, 89);border-radius:1.5vh;width:30%;margin-bottom:3vh;box-shadow: inset 3px 4px 10px black;padding:.5vh">
   <h3>Playlists</h3>
@@ -131,8 +132,8 @@ audio::-webkit-media-controls-toggle-closed-captions-button {
 <table style="width:95%">
     <?php foreach($list as $pl):?>
       <tr>
-      <td style="width:80%;font-weight:bold"><a href="/playlist/<?= str_replace('C:\laragon\www\Laboratory_2\public/uploads/','',$pl) ?>/null"><?= str_replace('C:\laragon\www\Laboratory_2\public/uploads/','',$pl) ?></a></td>
-      <td><a href="/delete_p/<?= str_replace('C:\laragon\www\Laboratory_2\public/uploads/','',$pl) ?>">Delete</a></td>
+      <td style="background-color:lightblue;width:70%;font-weight:bold;padding:1vh;border-radius:1vh"><a href="/playlist/<?= str_replace('C:\laragon\www\Laboratory_2\public/uploads/','',$pl) ?>/null"><?= str_replace('C:\laragon\www\Laboratory_2\public/uploads/','',$pl) ?></a></td>
+      <td style="background-color:black;border-radius:1vh;text-align:center;"><a style="color:white;" href="/delete_p/<?= str_replace('C:\laragon\www\Laboratory_2\public/uploads/','',$pl) ?>">Delete</a></td>
       <tr>
       <?php endforeach; ?>
 </table>
@@ -142,7 +143,7 @@ audio::-webkit-media-controls-toggle-closed-captions-button {
 <!-- end -->
 
 <!-- Song List -->
-<div style="width:30%;box-shadow: 1vh 1vh 5vh lightblue;padding:3vh;border-radius:1vh;margin-right:5%">
+<div style="width:30%;box-shadow: 1vh 1vh 5vh lightblue;padding:3vh;border-radius:1vh;margin-right:5%;background-color:rgba(255,255,255,70%)">
 <form action="/search" method="get" style="margin-bottom:3vh">
   <input style="border:solid gray .1vh;border-radius:1vh;font-size:2.5vh;padding:.5vh" type="text" name="music" placeholder="Search Songs" required>
   <input style="border:none;border-radius:1vh;font-size:2.5vh;padding:.6vh;box-shadow: inset 1px 1px 15px gray;rgb(179, 179, 179);width:40%" type="submit" placeholder="Submit">
@@ -151,14 +152,21 @@ audio::-webkit-media-controls-toggle-closed-captions-button {
 <div style="background-color:#ccffff;border-radius:1vh;padding-top:2vh;padding-bottom:2vh;">
 <center>
 <table style="width:95%">
-    <?php if(isset($plist)): ?>
+    <?php if(isset($plist) && !isset($setter['title'])): ?>
       <?php foreach($songs as $s): ?>
       <tr>
       <th style="width:70%;font-weight:bold;background-color:white;padding:1vh;border-radius:1vh"><a href="/playlist/<?= $plist ?>/<?= $s['musicID'] ?>"><?= $s['title'] ?></a></th>
       <td style="background-color:black;border-radius:1vh;padding-left:1vh;padding-right:1vh;text-align:center"><a style="color:white;" href="/delete/<?= $plist ?>/<?= $s['musicID'] ?>">Delete</a></td>
       <tr>
       <?php endforeach; ?>
-    <?php endif; ?>
+    <?php elseif(isset($setter['title'])): ?>
+      <?php foreach($search as $look): ?>
+      <tr>
+      <th style="width:70%;font-weight:bold;background-color:white;padding:1vh;border-radius:1vh"><a href="/playlist/<?= $look['playlist'] ?>/<?= $look['musicID'] ?>"><?= $look['title'] ?></a></th>
+      <td style="background-color:black;border-radius:1vh;padding-left:1vh;padding-right:1vh;text-align:center"><a style="color:white;" href="/delete/<?= $look['playlist'] ?>/<?= $look['musicID'] ?>">Delete</a></td>
+      <tr>
+      <?php endforeach; ?>
+      <?php endif; ?>
 </table>
       </center>
 </div>
@@ -166,7 +174,7 @@ audio::-webkit-media-controls-toggle-closed-captions-button {
 <!-- end -->
 
 <!-- Create & Remove PlayList -->
-<div style="width:30%;box-shadow: 1vh 1vh 5vh lightblue;padding:3vh;border-radius:1vh;margin-left:5%;">
+<div style="width:30%;box-shadow: 1vh 1vh 5vh lightblue;padding:3vh;border-radius:1vh;margin-left:5%;background-color:rgba(255,255,255,70%)">
 <form action="/save_p" method="post" style="margin-bottom:3vh">
   <input style="border:solid gray .1vh;border-radius:1vh;font-size:2.5vh;padding:.5vh" type="text" name="playlist" placeholder="Create Playlist" required>
   <input style="border:none;border-radius:1vh;font-size:2.5vh;padding:.6vh;box-shadow: inset 1px 1px 15px gray;rgb(179, 179, 179);width:40%" type="submit" name="submit" placeholder="Submit">
@@ -195,7 +203,7 @@ audio::-webkit-media-controls-toggle-closed-captions-button {
 <!-- end -->
 
 <!--Add Music -->
-<div style="background-color:rgb(179, 179, 179);width:30%;padding:3vh;border-radius:1vh;margin-right:5%">
+<div style="box-shadow: 1vh 1vh 5vh lightblue;background-color:rgb(179, 179, 179);width:30%;padding:3vh;border-radius:1vh;margin-right:5%">
 <center>
   <div style="background-color:rgb(89, 89, 89);border-radius:1.5vh;width:30%;margin-bottom:3vh;box-shadow: inset 3px 4px 10px black;padding:.5vh">
   <h3>Add Music <?php if(isset($plist)): echo 'to '.$plist; endif; ?>

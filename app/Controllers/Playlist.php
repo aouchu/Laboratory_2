@@ -31,14 +31,14 @@ class Playlist extends BaseController
         return view('music',$data);
     }
 
-    public function search()
-    {
-        $data  = [ 'plist' => $this->musicplaylist->where('playlist', $plname)->first(),
+    public function search(){
+        $find = $this->request->getVar('music');
+        $data  = [ 
         'list' => glob(PUBLIC_PATH.'/uploads'.'/*' , GLOB_ONLYDIR),
-        'songs' => $this->musicplaylist->where('playlist', $plname)->FindAll(),
-        'playing' => $this->musicplaylist->where('musicID', $song)->First(),
+        'search' => $this->musicplaylist->like('title', $find)->FindAll(),
+        'setter' => $this->musicplaylist->like('title', $find)->First(),
         ];
-        return view('music');
+        return view('music',$data);
     }
 
     public function save()
