@@ -30,7 +30,7 @@ class Playlist extends BaseController
 
     }
 
-    public function playlist()
+    public function playlist($plname)
     {
         $data  = [ 'playlist' => $this->musicplaylist->distinct()->get('playlist'),
         
@@ -43,20 +43,16 @@ class Playlist extends BaseController
         $file_path = PUBLIC_PATH."\uploads\\".$plname;
         if (!file_exists($file_path)) {
             mkdir($file_path, 0777, false);
-            $m = '1';
-            $data  = [ 'starter' => $this->musicplaylist->select('playlist')->first(),
-        'list' => $this->musicplaylist->distinct()->FindAll(),
-        'm' => '1',
+            $data  = [ 'list' => $this->musicplaylist->distinct()->FindAll(),
+            'm' => '1',
         ];
         return view('music',$data);
         }
         else {
-
-            $data  = [ 'starter' => $this->musicplaylist->select('playlist')->first(),
-        'list' => $this->musicplaylist->distinct()->FindAll(),
+            $data  = [ 'list' => $this->musicplaylist->distinct()->FindAll(),
+            'm' => '0',
         ];
         return view('music',$data);
-            return view('music');
         }
     }
 }

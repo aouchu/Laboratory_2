@@ -162,9 +162,10 @@ audio::-webkit-media-controls-toggle-closed-captions-button {
 <div style="width:30%;box-shadow: 1vh 1vh 5vh lightblue;padding:3vh;border-radius:1vh;margin-left:5%;">
 <form action="/save_p" method="post" style="margin-bottom:3vh">
   <input style="border:solid gray .1vh;border-radius:1vh;font-size:2.5vh;padding:.5vh" type="text" name="playlist" placeholder="Create Playlist" required>
-  <input style="border:none;border-radius:1vh;font-size:2.5vh;padding:.6vh;box-shadow: inset 1px 1px 15px gray;rgb(179, 179, 179);width:40%" type="submit" placeholder="Submit">
+  <input style="border:none;border-radius:1vh;font-size:2.5vh;padding:.6vh;box-shadow: inset 1px 1px 15px gray;rgb(179, 179, 179);width:40%" type="submit" name="submit" placeholder="Submit">
 </form>
 <?php if(isset($m)): ?>
+<?php if($m == 1): ?>
 <div style="background-color:#ccffff;border-radius:1vh;padding-top:2vh;padding-bottom:2vh;padding-left:5vh;padding-right:5vh;">
   <center>
     <pre>
@@ -173,7 +174,7 @@ audio::-webkit-media-controls-toggle-closed-captions-button {
 </pre>
 </center>
 </div>
-<?php else: ?>
+<?php elseif($m == 0): ?>
   <div style="background-color:#ccffff;border-radius:1vh;padding-top:2vh;padding-bottom:2vh;padding-left:5vh;padding-right:5vh;">
   <center>
     <pre>
@@ -182,14 +183,15 @@ audio::-webkit-media-controls-toggle-closed-captions-button {
 </center>
 </div>
 <?php endif; ?>
+<?php endif; ?>
 </div>
 <!-- end -->
 
-<!-- Playlists -->
+<!--Add Music -->
 <div style="background-color:rgb(179, 179, 179);width:30%;padding:3vh;border-radius:1vh;margin-right:5%">
 <center>
   <div style="background-color:rgb(89, 89, 89);border-radius:1.5vh;width:30%;margin-bottom:3vh;box-shadow: inset 3px 4px 10px black;padding:.5vh">
-  <h3>Playlists</h3>
+  <h3>Add Music</h3>
 </div>
 </center>  
 

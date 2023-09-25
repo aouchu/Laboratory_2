@@ -7,3 +7,32 @@ in APPPATH\Controllers\Playlist.php on line 45.
  5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
  7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\Laboratory_2\\public\\index.php')
+CRITICAL - 2023-09-25 02:39:23 --> CodeIgniter\HTTP\RedirectResponse::to(): Argument #2 ($code) must be of type ?int, array given, called in C:\laragon\www\Laboratory_2\app\Controllers\Playlist.php on line 58
+in SYSTEMPATH\HTTP\RedirectResponse.php on line 32.
+ 1 APPPATH\Controllers\Playlist.php(58): CodeIgniter\HTTP\RedirectResponse->to('/music', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\Playlist->save_p()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Playlist))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\Laboratory_2\\public\\index.php')
+CRITICAL - 2023-09-25 02:50:23 --> Undefined variable $m
+in APPPATH\Views\music.php on line 167.
+ 1 APPPATH\Views\music.php(167): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $m', 'C:\\laragon\\www\\Laboratory_2\\app\\Views\\music.php', 167)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\Laboratory_2\\app\\Views\\music.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('music', [], true)
+ 5 APPPATH\Controllers\Playlist.php(20): view('music', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\Playlist->index()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Playlist))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\Laboratory_2\\public\\index.php')
+CRITICAL - 2023-09-25 02:51:35 --> mkdir(): File exists
+in APPPATH\Controllers\Playlist.php on line 52.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'mkdir(): File exists', 'C:\\laragon\\www\\Laboratory_2\\app\\Controllers\\Playlist.php', 52)
+ 2 APPPATH\Controllers\Playlist.php(52): mkdir('C:\\laragon\\www\\Laboratory_2\\public\\uploads\\Hope', 511, false)
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\Playlist->save_p()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Playlist))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\Laboratory_2\\public\\index.php')
