@@ -128,10 +128,13 @@ audio::-webkit-media-controls-toggle-closed-captions-button {
 <div style="background-color:white;border-radius:1vh;padding-top:2vh;padding-bottom:2vh;padding-left:5vh;padding-right:5vh;">
 <table style="width:95%">
     <?php foreach($list as $pl): ?>
+      <?php $file_path = PUBLIC_PATH."\uploads\\".$pl['playlist'];
+        if (file_exists($file_path)): ?>
       <tr>
       <td style="width:80%;font-weight:bold"><a href="/playlist/<?= $pl['playlist'] ?>"><?= $pl['playlist'] ?></a></td>
-      <td><a href="/delete/<?= $pl['playlist'] ?>">Delete</a></td>
+      <td><a href="/delete_p/<?= $pl['playlist'] ?>">Delete</a></td>
       <tr>
+        <?php endif; ?>
       <?php endforeach; ?>
 </table>
 </div>
@@ -145,15 +148,19 @@ audio::-webkit-media-controls-toggle-closed-captions-button {
   <input style="border:none;border-radius:1vh;font-size:2.5vh;padding:.6vh;box-shadow: inset 1px 1px 15px gray;rgb(179, 179, 179);width:40%" type="submit" placeholder="Submit">
 </form>
 
-<div style="background-color:#ccffff;border-radius:1vh;padding-top:2vh;padding-bottom:2vh;padding-left:5vh;padding-right:5vh;">
+<div style="background-color:#ccffff;border-radius:1vh;padding-top:2vh;padding-bottom:2vh;">
+<center>
 <table style="width:95%">
-    <?php foreach($list as $pl): ?>
+    <?php if(isset($plist['playlist'])): ?>
+      <?php foreach($songs as $s): ?>
       <tr>
-      <td style="width:80%;font-weight:bold"><a href="/playlist/<?= $pl['playlist'] ?>"><?= $pl['playlist'] ?></a></td>
-      <td><a href="/delete/<?= $pl['playlist'] ?>">Delete</a></td>
+      <th style="width:70%;font-weight:bold;background-color:white;padding:1vh"><?= $s['music'] ?></th>
+      <td style="background-color:black;border-radius:1vh;padding-left:1vh;padding-right:1vh;text-align:center"><a style="color:white;" href="/delete/<?= $s['musicID'] ?>">Delete</a></td>
       <tr>
       <?php endforeach; ?>
+    <?php endif; ?>
 </table>
+      </center>
 </div>
 </div>
 <!-- end -->
@@ -196,7 +203,12 @@ audio::-webkit-media-controls-toggle-closed-captions-button {
 </center>  
 
 <div style="background-color:white;border-radius:1vh;padding-top:2vh;padding-bottom:2vh;padding-left:5vh;padding-right:5vh;">
-
+<form action="/save" method="post">
+  <input style="border:solid gray .1vh;border-radius:1vh;font-size:2.5vh;width:55%" type="file" name="music" placeholder="Add Songs" required>
+  <?php if(isset($plist['playlist'])): ?>
+  <input style="border:none;border-radius:1vh;font-size:2.5vh;padding:.6vh;box-shadow: inset 1px 1px 15px gray;rgb(179, 179, 179);width:40%" type="submit" placeholder="Submit">
+  <?php endif; ?>
+</form>
 </div>
     </div>
 <!-- end -->

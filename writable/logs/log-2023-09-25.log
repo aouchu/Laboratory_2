@@ -36,3 +36,45 @@ in APPPATH\Controllers\Playlist.php on line 52.
  5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
  7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\Laboratory_2\\public\\index.php')
+CRITICAL - 2023-09-25 02:55:05 --> Array to string conversion
+in APPPATH\Views\music.php on line 151.
+ 1 APPPATH\Views\music.php(151): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\laragon\\www\\Laboratory_2\\app\\Views\\music.php', 151)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\Laboratory_2\\app\\Views\\music.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('music', [], true)
+ 5 APPPATH\Controllers\Playlist.php(20): view('music', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\Playlist->index()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Playlist))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\Laboratory_2\\public\\index.php')
+CRITICAL - 2023-09-25 03:29:05 --> syntax error, unexpected end of file, expecting "elseif" or "else" or "endif"
+in APPPATH\Views\music.php on line 211.
+ 1 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('music', [], true)
+ 3 APPPATH\Controllers\Playlist.php(19): view('music', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\Playlist->index()
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Playlist))
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\Laboratory_2\\public\\index.php')
+CRITICAL - 2023-09-25 03:36:10 --> Call to undefined method App\Models\Music::group_by
+in SYSTEMPATH\Model.php on line 873.
+ 1 APPPATH\Controllers\Playlist.php(36): CodeIgniter\Model->__call('group_by', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\Playlist->playlist('Hope')
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Playlist))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\Laboratory_2\\public\\index.php')
+CRITICAL - 2023-09-25 03:50:50 --> Undefined array key "musicID"
+in APPPATH\Views\music.php on line 157.
+ 1 APPPATH\Views\music.php(157): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "musicID"', 'C:\\laragon\\www\\Laboratory_2\\app\\Views\\music.php', 157)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\Laboratory_2\\app\\Views\\music.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('music', [], true)
+ 5 APPPATH\Controllers\Playlist.php(38): view('music', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\Playlist->playlist('Hope')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Playlist))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\Laboratory_2\\public\\index.php')
