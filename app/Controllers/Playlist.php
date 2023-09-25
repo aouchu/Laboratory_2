@@ -95,7 +95,7 @@ class Playlist extends BaseController
         $path = PUBLIC_PATH.implode($finder['music']);
         unlink($path);
         $this->musicplaylist->where('musicID', $song)->delete();
-        return redirect()->to('/playlist/'.$pl.'/null');
+        return redirect()->to('/playlist/'.$plname.'/null');
     }
 
     public function delete_p($plname){
