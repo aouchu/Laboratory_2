@@ -11,6 +11,7 @@
     margin:0;
     padding:0;
   }
+  
   h1 {
     margin-top:5vh;
     margin-bottom:5vh;
@@ -21,6 +22,13 @@
     color:white;
     font-family: 'Kenia', cursive;
   }
+
+  a {
+    color:black;
+  text-decoration: none;
+  font-family: 'Trebuchet MS', sans-serif;
+}
+
   audio {
     margin-top:2.3vh;
     height:5vh;
@@ -37,10 +45,6 @@
     background-color:white;
     border-radius:50%;
   }
-
-audio::-webkit-media-controls-timeline-container {
-
-}
 
 audio::-webkit-media-controls-current-time-display {
   color:white;
@@ -59,21 +63,45 @@ audio::-webkit-media-controls-timeline {
 
 audio::-webkit-media-controls-volume-slider-container {
   background-color:white;
+  border-radius:2vh;
 }
 
-audio::-webkit-media-controls-volume-slider
+audio::-webkit-media-controls-volume-slider {
+  background-color:white;
+  border-radius:2vh;
+  padding-left:2vh;
+  padding-right:2vh;
+}
 
-audio::-webkit-media-controls-seek-back-button
+audio::-webkit-media-controls-seek-back-button {
+  background-color:white;
+  border-radius:2vh;
+}
 
-audio::-webkit-media-controls-seek-forward-button
+audio::-webkit-media-controls-seek-forward-button {
+  background-color:white;
+  border-radius:2vh;
+}
 
-audio::-webkit-media-controls-fullscreen-button
+audio::-webkit-media-controls-fullscreen-button {
+  background-color:white;
+  border-radius:2vh;
+}
 
-audio::-webkit-media-controls-rewind-button
+audio::-webkit-media-controls-rewind-button {
+  background-color:white;
+  border-radius:2vh;
+}
 
-audio::-webkit-media-controls-return-to-realtime-button
+audio::-webkit-media-controls-return-to-realtime-button {
+  background-color:white;
+  border-radius:2vh;
+}
 
-audio::-webkit-media-controls-toggle-closed-captions-button
+audio::-webkit-media-controls-toggle-closed-captions-button {
+  background-color:white;
+  border-radius:2vh;
+}
 </style>
 <body>
   <center>
@@ -84,13 +112,13 @@ audio::-webkit-media-controls-toggle-closed-captions-button
 <!-- music player -->
 <div style="background-color:black;width:80%;height:10vh;border-radius: 15px 50px 30px;box-shadow: 1vh 1vh 5vh lightblue;">
 <center>
-<audio controls></audio>
+<audio src='/uploads/king.mp3'controls></audio>
 </center>
 </div>
 <!-- end -->
 
 <!-- Playlists -->
-<div style="background-color:rgb(179, 179, 179);width:30%;padding:3vh;border-radius:1vh">
+<div style="background-color:rgb(179, 179, 179);width:30%;padding:3vh;border-radius:1vh;margin-left:5%">
 <center>
   <div style="background-color:rgb(89, 89, 89);border-radius:1.5vh;width:30%;margin-bottom:3vh;box-shadow: inset 3px 4px 10px black;padding:.5vh">
   <h3>Playlists</h3>
@@ -98,30 +126,77 @@ audio::-webkit-media-controls-toggle-closed-captions-button
 </center>  
 
 <div style="background-color:white;border-radius:1vh;padding-top:2vh;padding-bottom:2vh;padding-left:5vh;padding-right:5vh;">
-<ul>
+<table style="width:95%">
     <?php foreach($list as $pl): ?>
-      <li><a href="/playlist/<?= $pl['playlist'] ?>"><?= $pl['playlist'] ?></a></li>
+      <tr>
+      <td style="width:80%;font-weight:bold"><a href="/playlist/<?= $pl['playlist'] ?>"><?= $pl['playlist'] ?></a></td>
+      <td><a href="/delete/<?= $pl['playlist'] ?>">Delete</a></td>
+      <tr>
       <?php endforeach; ?>
-</ul>
+</table>
 </div>
     </div>
 <!-- end -->
 
 <!-- Song List -->
-<div style="width:30%;box-shadow: 1vh 1vh 5vh lightblue;padding:3vh;border-radius:1vh">
+<div style="width:30%;box-shadow: 1vh 1vh 5vh lightblue;padding:3vh;border-radius:1vh;margin-right:5%">
 <form action="/search" method="get" style="margin-bottom:3vh">
-  <input style="border:solid black .5px;border-radius:1vh;font-size:2.5vh;padding:.5vh" type="text" name="music" placeholder="Search Songs" required>
+  <input style="border:solid gray .1vh;border-radius:1vh;font-size:2.5vh;padding:.5vh" type="text" name="music" placeholder="Search Songs" required>
   <input style="border:none;border-radius:1vh;font-size:2.5vh;padding:.6vh;box-shadow: inset 1px 1px 15px gray;rgb(179, 179, 179);width:40%" type="submit" placeholder="Submit">
 </form>
 
 <div style="background-color:#ccffff;border-radius:1vh;padding-top:2vh;padding-bottom:2vh;padding-left:5vh;padding-right:5vh;">
-<ul>
+<table style="width:95%">
     <?php foreach($list as $pl): ?>
-      <li><a href="/playlist/.<?= $pl['playlist'] ?>."><?= $pl['playlist'] ?></a></li>
+      <tr>
+      <td style="width:80%;font-weight:bold"><a href="/playlist/<?= $pl['playlist'] ?>"><?= $pl['playlist'] ?></a></td>
+      <td><a href="/delete/<?= $pl['playlist'] ?>">Delete</a></td>
+      <tr>
       <?php endforeach; ?>
-</ul>
+</table>
 </div>
 </div>
+<!-- end -->
+
+<!-- Create & Remove PlayList -->
+<div style="width:30%;box-shadow: 1vh 1vh 5vh lightblue;padding:3vh;border-radius:1vh;margin-left:5%;">
+<form action="/save_p" method="post" style="margin-bottom:3vh">
+  <input style="border:solid gray .1vh;border-radius:1vh;font-size:2.5vh;padding:.5vh" type="text" name="playlist" placeholder="Create Playlist" required>
+  <input style="border:none;border-radius:1vh;font-size:2.5vh;padding:.6vh;box-shadow: inset 1px 1px 15px gray;rgb(179, 179, 179);width:40%" type="submit" placeholder="Submit">
+</form>
+<?php if(isset($m)): ?>
+<div style="background-color:#ccffff;border-radius:1vh;padding-top:2vh;padding-bottom:2vh;padding-left:5vh;padding-right:5vh;">
+  <center>
+    <pre>
+      Playlist created
+      sucessfully!
+</pre>
+</center>
+</div>
+<?php else: ?>
+  <div style="background-color:#ccffff;border-radius:1vh;padding-top:2vh;padding-bottom:2vh;padding-left:5vh;padding-right:5vh;">
+  <center>
+    <pre>
+      Duplicate Playlist!
+</pre>
+</center>
+</div>
+<?php endif; ?>
+</div>
+<!-- end -->
+
+<!-- Playlists -->
+<div style="background-color:rgb(179, 179, 179);width:30%;padding:3vh;border-radius:1vh;margin-right:5%">
+<center>
+  <div style="background-color:rgb(89, 89, 89);border-radius:1.5vh;width:30%;margin-bottom:3vh;box-shadow: inset 3px 4px 10px black;padding:.5vh">
+  <h3>Playlists</h3>
+</div>
+</center>  
+
+<div style="background-color:white;border-radius:1vh;padding-top:2vh;padding-bottom:2vh;padding-left:5vh;padding-right:5vh;">
+
+</div>
+    </div>
 <!-- end -->
 
 </div>
