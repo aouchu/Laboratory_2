@@ -19,6 +19,16 @@ class Playlist extends BaseController
         return view('music',$data);
     }
 
+    public function playlist($plname, $song)
+    {
+        $data  = [ 'plist' => $this->musicplaylist->where('playlist', $plname)->first(),
+        'list' => $this->musicplaylist->distinct()->FindAll(),
+        'songs' => $this->musicplaylist->where('playlist', $plname)->FindAll(),
+        'playing' => $this->musicplaylist->where('musicID', $song)->First(),
+        ];
+        return view('music',$data);
+    }
+
     public function search()
     {
         return view('music');
@@ -27,15 +37,6 @@ class Playlist extends BaseController
     public function save()
     {
 
-    }
-
-    public function playlist($plname)
-    {
-        $data  = [ 'plist' => $this->musicplaylist->where('playlist', $plname)->first(),
-        'list' => $this->musicplaylist->distinct()->FindAll(),
-        'songs' => $this->musicplaylist->where('playlist', $plname)->FindAll(),
-        ];
-        return view('music',$data);
     }
 
     public function save_p()

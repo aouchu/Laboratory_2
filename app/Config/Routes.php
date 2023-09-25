@@ -10,6 +10,6 @@ $routes->get('/music', 'Playlist::index');
 $routes->get('/search', 'Playlist::search');
 $routes->post('/save', 'Playlist::save');
 $routes->post('/save_p', 'Playlist::save_p');
-$routes->get('/playlist/(:any)', 'Playlist::playlist/$1');
+$routes->get('/playlist/(:any)/(:any)', 'Playlist::playlist/$1/$2');
 
 

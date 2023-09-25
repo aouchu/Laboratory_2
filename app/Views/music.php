@@ -112,7 +112,8 @@ audio::-webkit-media-controls-toggle-closed-captions-button {
 <!-- music player -->
 <div style="background-color:black;width:80%;height:10vh;border-radius: 15px 50px 30px;box-shadow: 1vh 1vh 5vh lightblue;">
 <center>
-<audio src='/uploads/king.mp3'controls></audio>
+<audio src='<?php if(isset($playing['music'])): if (!file_exists($playing['music'])): $src = $playing['music']; $fsrc = str_replace('_',' ',$src); echo $fsrc; else: echo $playing['music']; endif; endif; ?>' controls>
+</audio>
 </center>
 </div>
 <!-- end -->
@@ -125,18 +126,20 @@ audio::-webkit-media-controls-toggle-closed-captions-button {
 </div>
 </center>  
 
-<div style="background-color:white;border-radius:1vh;padding-top:2vh;padding-bottom:2vh;padding-left:5vh;padding-right:5vh;">
+<div style="background-color:white;border-radius:1vh;padding-top:2vh;padding-bottom:2vh;">
+<center>
 <table style="width:95%">
     <?php foreach($list as $pl): ?>
       <?php $file_path = PUBLIC_PATH."\uploads\\".$pl['playlist'];
         if (file_exists($file_path)): ?>
       <tr>
-      <td style="width:80%;font-weight:bold"><a href="/playlist/<?= $pl['playlist'] ?>"><?= $pl['playlist'] ?></a></td>
+      <td style="width:80%;font-weight:bold"><a href="/playlist/<?= $pl['playlist'] ?>/null"><?= $pl['playlist'] ?></a></td>
       <td><a href="/delete_p/<?= $pl['playlist'] ?>">Delete</a></td>
       <tr>
         <?php endif; ?>
       <?php endforeach; ?>
 </table>
+        </center>
 </div>
     </div>
 <!-- end -->
@@ -154,7 +157,7 @@ audio::-webkit-media-controls-toggle-closed-captions-button {
     <?php if(isset($plist['playlist'])): ?>
       <?php foreach($songs as $s): ?>
       <tr>
-      <th style="width:70%;font-weight:bold;background-color:white;padding:1vh"><?= $s['music'] ?></th>
+      <th style="width:70%;font-weight:bold;background-color:white;padding:1vh;border-radius:1vh"><a href="/playlist/<?= $pl['playlist'] ?>/<?= $s['musicID'] ?>"><?= $s['music'] ?></a></th>
       <td style="background-color:black;border-radius:1vh;padding-left:1vh;padding-right:1vh;text-align:center"><a style="color:white;" href="/delete/<?= $s['musicID'] ?>">Delete</a></td>
       <tr>
       <?php endforeach; ?>
