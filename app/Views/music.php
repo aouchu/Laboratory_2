@@ -129,14 +129,11 @@ audio::-webkit-media-controls-toggle-closed-captions-button {
 <div style="background-color:white;border-radius:1vh;padding-top:2vh;padding-bottom:2vh;">
 <center>
 <table style="width:95%">
-    <?php foreach($list as $pl): ?>
-      <?php $file_path = PUBLIC_PATH."\uploads\\".$pl['playlist'];
-        if (file_exists($file_path)): ?>
+    <?php foreach($list as $pl):?>
       <tr>
-      <td style="width:80%;font-weight:bold"><a href="/playlist/<?= $pl['playlist'] ?>/null"><?= $pl['playlist'] ?></a></td>
-      <td><a href="/delete_p/<?= $pl['playlist'] ?>">Delete</a></td>
+      <td style="width:80%;font-weight:bold"><a href="/playlist/<?= str_replace('C:\laragon\www\Laboratory_2\public/uploads/','',$pl) ?>/null"><?= str_replace('C:\laragon\www\Laboratory_2\public/uploads/','',$pl) ?></a></td>
+      <td><a href="/delete_p/<?= str_replace('C:\laragon\www\Laboratory_2\public/uploads/','',$pl) ?>">Delete</a></td>
       <tr>
-        <?php endif; ?>
       <?php endforeach; ?>
 </table>
         </center>
@@ -154,11 +151,11 @@ audio::-webkit-media-controls-toggle-closed-captions-button {
 <div style="background-color:#ccffff;border-radius:1vh;padding-top:2vh;padding-bottom:2vh;">
 <center>
 <table style="width:95%">
-    <?php if(isset($plist['playlist'])): ?>
+    <?php if(isset($plist)): ?>
       <?php foreach($songs as $s): ?>
       <tr>
-      <th style="width:70%;font-weight:bold;background-color:white;padding:1vh;border-radius:1vh"><a href="/playlist/<?= $pl['playlist'] ?>/<?= $s['musicID'] ?>"><?= $s['music'] ?></a></th>
-      <td style="background-color:black;border-radius:1vh;padding-left:1vh;padding-right:1vh;text-align:center"><a style="color:white;" href="/delete/<?= $s['musicID'] ?>">Delete</a></td>
+      <th style="width:70%;font-weight:bold;background-color:white;padding:1vh;border-radius:1vh"><a href="/playlist/<?= $plist ?>/<?= $s['musicID'] ?>"><?= $s['title'] ?></a></th>
+      <td style="background-color:black;border-radius:1vh;padding-left:1vh;padding-right:1vh;text-align:center"><a style="color:white;" href="/delete/<?= $plist ?>/<?= $s['musicID'] ?>">Delete</a></td>
       <tr>
       <?php endforeach; ?>
     <?php endif; ?>
@@ -201,16 +198,17 @@ audio::-webkit-media-controls-toggle-closed-captions-button {
 <div style="background-color:rgb(179, 179, 179);width:30%;padding:3vh;border-radius:1vh;margin-right:5%">
 <center>
   <div style="background-color:rgb(89, 89, 89);border-radius:1.5vh;width:30%;margin-bottom:3vh;box-shadow: inset 3px 4px 10px black;padding:.5vh">
-  <h3>Add Music</h3>
+  <h3>Add Music <?php if(isset($plist)): echo 'to '.$plist; endif; ?>
+  </h3>
 </div>
 </center>  
 
 <div style="background-color:white;border-radius:1vh;padding-top:2vh;padding-bottom:2vh;padding-left:5vh;padding-right:5vh;">
-<form action="/save" method="post">
-  <input style="border:solid gray .1vh;border-radius:1vh;font-size:2.5vh;width:55%" type="file" name="music" placeholder="Add Songs" required>
-  <?php if(isset($plist['playlist'])): ?>
+<form action="/save" method="post" enctype="multipart/form-data">
+<input type='hidden' name='id' value='<?php if(isset($playing['musicID'])): ?><?= $playing['musicID']; endif; ?>' required>
+  <input type='hidden' name='playlist' value='<?php if(isset($plist)): ?><?= $plist; endif; ?>' required>
+  <input style="border:solid gray .1vh;border-radius:1vh;font-size:2.5vh;width:55%" type="file" name="song" placeholder="Add Songs" required>
   <input style="border:none;border-radius:1vh;font-size:2.5vh;padding:.6vh;box-shadow: inset 1px 1px 15px gray;rgb(179, 179, 179);width:40%" type="submit" placeholder="Submit">
-  <?php endif; ?>
 </form>
 </div>
     </div>
