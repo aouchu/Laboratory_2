@@ -43,7 +43,6 @@ class Playlist extends BaseController
 
     public function save()
     {
-        $id = $this->request->getVar('id');
         $pl = $this->request->getVar('playlist');
         $file = $this->request->getFile('song');
         $file->move(PUBLIC_PATH.'\uploads\\'.$pl.'\\');
@@ -121,6 +120,8 @@ class Playlist extends BaseController
         return redirect()->to('/music');
     }
     
-    
+    public function test(){
+        return view('test');
+    }
 }
 

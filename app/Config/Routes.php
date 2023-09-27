@@ -14,4 +14,3 @@ $routes->get('/delete_p/(:any)', 'Playlist::delete_p/$1');
 $routes->get('/delete/(:any)/(:any)', 'Playlist::delete/$1/$2');
 $routes->get('/playlist/(:any)/(:any)', 'Playlist::playlist/$1/$2');
 
-
