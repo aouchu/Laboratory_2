@@ -358,7 +358,7 @@ audio::-webkit-media-controls-toggle-closed-captions-button {
 <!-- Song List -->
 <div style="width:35%;box-shadow: 1vh 1vh 5vh lightblue;padding:3vh;border-radius:1vh;margin-right:5%;background-color:rgba(255,255,255,70%)">
 <form action="/search" method="get" style="margin-bottom:3vh">
-  <input style="border:solid gray .1vh;border-radius:1vh;font-size:2vh;padding:.5vh" type="text" name="music" placeholder="Search Songs" required>
+  <input style="border:solid gray .1vh;border-radius:1vh;font-size:2.2vh;padding:.5vh;width:50%" type="text" name="music" placeholder="Search Songs" required>
   <input style="border:none;border-radius:1vh;font-size:2vh;padding:.7vh;box-shadow: inset 1px 1px 15px lightblue;background-color:black;width:40%;float:right;color:white" type="submit" placeholder="Submit">
 </form>
 
