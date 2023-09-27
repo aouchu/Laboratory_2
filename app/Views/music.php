@@ -270,7 +270,7 @@ audio::-webkit-media-controls-toggle-closed-captions-button {
     <br>
     <form action="/save_p" method="post" style="margin-bottom:3vh">
       <input style="border:solid gray .1vh;border-radius:1vh;font-size:2.5vh;padding:.5vh" type="text" name="playlist" placeholder="Create Playlist" required>
-      <input style="border:none;border-radius:1vh;font-size:2.5vh;padding:.6vh;box-shadow: inset 1px 1px 15px gray;rgb(179, 179, 179);width:40%" type="submit" name="submit" placeholder="Submit">
+      <input style="border:none;border-radius:1vh;font-size:2vh;padding:.7vh;box-shadow: inset 1px 1px 15px lightblue;background-color:black;width:40%;float:right;color:white" type="submit" name="submit" placeholder="Submit">
     </form>
     <?php if(isset($m)): ?>
       <?php if($m == 1): ?>
